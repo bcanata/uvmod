@@ -242,7 +242,7 @@ modClasses = [
     ,
     class Mod_SkipBootscreen extends FirmwareMod {
         constructor() {
-            super("Skip Bootscreen", "Skips the bootscreen and instantly goes to the main screen on powerup.", 0);
+            super("Açılış Ekranını Atla", "Açılış ekranını direkt geçer ve açılır açılmaz telsizin ana ekranını görüntüler.", 0);
         }
 
         apply(firmwareData) {
@@ -254,7 +254,7 @@ modClasses = [
                 log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
+                log(`HATA ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
@@ -263,10 +263,10 @@ modClasses = [
     ,
     class Mod_Font extends FirmwareMod {
         constructor() {
-            super("Font", "Changes the font to one of the following custom fonts: ", 0);
+            super("Yazı Tipi", "Yazı tipini aşağıdakilerden birisi ile değiştirir: ", 0);
 
-            this.selectVCR = addRadioButton(this.modSpecificDiv, "VCR Font, replaces big digits", "selectVCR", "selectFont");
-            this.selectFuturistic = addRadioButton(this.modSpecificDiv, "Futuristic Font (by DO7OO), replaces big and small digits", "selectFuturistic", "selectFont");
+            this.selectVCR = addRadioButton(this.modSpecificDiv, "VCR Yazı Tipi, büyük rakamları değiştirir.", "selectVCR", "selectFont");
+            this.selectFuturistic = addRadioButton(this.modSpecificDiv, "Fütüristik Yazı Tipi (by DO7OO), büyük ve küçük rakamları değiştirir.", "selectFuturistic", "selectFont");
             this.selectVCR.checked = true;
 
         }
@@ -290,7 +290,7 @@ modClasses = [
     ,
     class Mod_NegativeDisplay extends FirmwareMod {
         constructor() {
-            super("Negative Display", "Inverts the colors on the display.", 0);
+            super("Negatif Ekran", "Ekrandaki renkleri tersine çevirir (siyah kısımlar beyaz, beyaz kısımlar siyah).", 0);
         }
 
         apply(firmwareData) {
@@ -302,7 +302,7 @@ modClasses = [
                 log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
+                log(`HATA ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
@@ -311,7 +311,7 @@ modClasses = [
     ,
     class Mod_FreqCopyTimeout extends FirmwareMod {
         constructor() {
-            super("Disable Freq Copy Timeout", "Prevents freq copy and CTCSS decoder from timing out with \"SCAN FAIL\", allowing both functions to run indefinitely until a signal is found.", 0);
+            super("Frekans Kopyalama Zaman Aşımını İptal Et", "Frekans kopyalama ve CTCSS ton bulma özelliğinin belli bir süre çalıştıktan sonra \"SCAN FAIL\" uyarısı vererek zaman aşımı vermesini ortadan kaldırır. Fonksiyonlar sinyal tespit edilene kadar sürekli çalışır.", 0);
         }
 
         apply(firmwareData) {
@@ -323,7 +323,7 @@ modClasses = [
                 log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
+                log(`HATA ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
@@ -332,7 +332,7 @@ modClasses = [
     ,
     class Mod_DisableTX extends FirmwareMod {
         constructor() {
-            super("Disable TX completely", "Prevents transmitting on all frequencies, making the radio purely a receiver.", 0);
+            super("Gönderimi (TX) Tamamen İptal Et", "Tüm frekanslarda gönderim yapmayı iptal eder, telsiz sadece bir alıcı olarak çalışır.", 0);
         }
 
         apply(firmwareData) {
@@ -344,7 +344,7 @@ modClasses = [
                 log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
+                log(`HATA ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
@@ -366,7 +366,7 @@ modClasses = [
                 log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
+                log(`HATA ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
@@ -426,12 +426,12 @@ modClasses = [
     ,*/
     class Mod_BacklightDuration extends FirmwareMod {
         constructor() {
-            super("Backlight Duration", "Sets a multiplier for the backlight duration.", 0);
+            super("Aydınlatma Süresi", "Cihazın arka aydınlatma süresini seçilen kat kadar artırır.", 0);
 
-            this.select1 = addRadioButton(this.modSpecificDiv, "1x - up to 5s backlight (default value)", "select1", "selectBacklightDuration");
-            this.select2 = addRadioButton(this.modSpecificDiv, "2x - up to 10s backlight", "select2", "selectBacklightDuration");
-            this.select4 = addRadioButton(this.modSpecificDiv, "4x - up to 20s backlight", "select4", "selectBacklightDuration");
-            this.select8 = addRadioButton(this.modSpecificDiv, "8x - up to 40s backlight", "select8", "selectBacklightDuration");
+            this.select1 = addRadioButton(this.modSpecificDiv, "1x - 5 saniye arka ışık (varsayılan)", "select1", "selectBacklightDuration");
+            this.select2 = addRadioButton(this.modSpecificDiv, "2x - 10 saniye arka ışık", "select2", "selectBacklightDuration");
+            this.select4 = addRadioButton(this.modSpecificDiv, "4x - 20 saniye arka ışık", "select4", "selectBacklightDuration");
+            this.select8 = addRadioButton(this.modSpecificDiv, "8x - 40 saniye arka ışık", "select8", "selectBacklightDuration");
             this.select2.checked = true;
         }
 
@@ -462,7 +462,7 @@ modClasses = [
     ,
     class Mod_MenuStrings extends FirmwareMod {
         constructor() {
-            super("Menu strings", "Changes text in the settings menu. The displayed JSON contains every string with offset, description and size. Only edit the string and dont use more characters than allowed by the size.", 0);
+            super("Menü Metinleri", "Ayarlar menüsünde görüntülenen yazıları değiştirir. Aşağıdaki JSON dosyası her yazının bulunduğu konumu, açıklamasını ve uzunluğunu göstermektedir. Yalnızca string yazan bölümü değiştirin ve 'size' yazan bölümdeki karakter sayısından fazla karakter kullanmayın.", 0);
 
             // the  b l o c k
             const strings = [{ "offset": 56470, "description": "squelch", "size": 6, "string": "SQLCH" }, { "offset": 56477, "description": "step", "size": 6, "string": "STEP" }, { "offset": 56484, "description": "txpower", "size": 6, "string": "TXPWR" }, { "offset": 56491, "description": "r dcs", "size": 6, "string": "R_DCS" },
@@ -542,7 +542,7 @@ modClasses = [
                 log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
+                log(`HATA ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
@@ -580,7 +580,7 @@ modClasses = [
                 log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
+                log(`HATA ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
@@ -604,7 +604,7 @@ modClasses = [
                 log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
+                log(`HATA ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
@@ -812,7 +812,7 @@ modClasses = [
                 log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Repeater Tone Burst must be a Tone Freq. in Hz from 1000-3950 Hz!`);
+                log(`HATA ${this.name}: Repeater Tone Burst must be a Tone Freq. in Hz from 1000-3950 Hz!`);
             }
             return firmwareData;
         }
@@ -841,7 +841,7 @@ modClasses = [
                 log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
+                log(`HATA ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
@@ -928,7 +928,7 @@ modClasses = [
                 log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
+                log(`HATA ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
@@ -953,7 +953,7 @@ modClasses = [
                 log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Kontrast değeri 0-63 arasında bir değer olmalı!`);
+                log(`HATA ${this.name}: Kontrast değeri 0-63 arasında bir değer olmalı!`);
             }
             return firmwareData;
         }
