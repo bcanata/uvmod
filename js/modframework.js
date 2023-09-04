@@ -68,7 +68,7 @@ function addModToUI(mod, modDiv) {
   const sizeCol = document.createElement("div");
   sizeCol.classList.add("col-auto");
   const sizeText = document.createElement("p");
-  sizeText.textContent = "Flash usage: " + mod.size + " Bytes";
+  sizeText.textContent = "Hafıza kullanımı: " + mod.size + " bayt";
   sizeCol.appendChild(sizeText);
 
   // Add columns to the row

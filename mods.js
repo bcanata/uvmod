@@ -1,14 +1,14 @@
 modClasses = [
     class Mod_APP extends FirmwareMod {
         constructor() {
-            super("Apps", "Adds an application to the firmware. Some apps are started with the flashlight button. Due to very limited space available, you can only select one app:", "up to 2770");
+            super("Uygulamalar", "Yazılıma seçilen bir uygulamayı ekler. Bazı uygulamalar, ışık düğmesi ile başlatılmaktadır. Alan sınırlaması sebebiyle, sadece bir uygulama seçebilirsiniz:", "en fazla 2770");
 
-            this.selectSbar = addRadioButton(this.modSpecificDiv, "RSSI, S-Meter and battery voltage readout on the main screen. By @piotr022, v78.", "selectSbar", "selectApp");
-            this.selectGraph = addRadioButton(this.modSpecificDiv, "RSSI and RSSI Graph on the main screen. By @piotr022, v78.", "selectGraph", "selectApp");
-            this.selectSpectr = addRadioButton(this.modSpecificDiv, "Spectrum analyzer. Starts with the flashlight button. Up / down (hold) - change the center frequency, 8/2 - zoom in / out, 1/7 - increase / decrease resolution, PTT / EXIT - exit. After exiting, open the menu to refresh the screen. By @piotr022, v78.", "selectSpectr", "selectApp");
-            this.selectSpectrM = addRadioButton(this.modSpecificDiv, "Advanced spectrum analyzer. Starts with the flashlight button. Before starting, either turn off the noise reduction (SQL to 0) or turn on the monitoring mode. Up / down - frequency change, 1/7 - sensitivity (measurement time), 2/8 - frequency step, 9/3 - zoom in / out, * / F (hold) - noise reduction level, 5 - backlight, 0 - ignore frequency, EXIT - exit. After exiting, open the menu to refresh the screen. By @fagci, v66.", "selectSpectrM", "selectApp");
-            this.selectMessenger = addRadioButton(this.modSpecificDiv, "Text messenger (digital transmission). Starts with the flashlight button. Use the number keys in T9 style for typing a message, MENU - send, EXIT - clear message or exit if message is empty. To confirm a letter (if you need to reuse the same number key), press *. By @piotr022, v78.", "selectMessenger", "selectApp");
-            this.selectPong = addRadioButton(this.modSpecificDiv, "Pong game (first ever mod app). Starts after boot. By @piotr022, v78.", "selectPong", "selectApp");
+            this.selectSbar = addRadioButton(this.modSpecificDiv, "RSSI, Sinyalmetre ve batarya voltaj değeri ana ekranda görünür. @piotr022, v78.", "selectSbar", "selectApp");
+            this.selectGraph = addRadioButton(this.modSpecificDiv, "RSSI and RSSI Grafiği ana ekranda görünür. @piotr022, v78.", "selectGraph", "selectApp");
+            this.selectSpectr = addRadioButton(this.modSpecificDiv, "Spektrum analizörü. Işık düğmesi ile açılır. Aşağı / Yukarı (basılı tutun) - merkez frekans değerini değiştirme, 8/2 - yaklaştır / uzaklaştır, 1/7 - çözünürlüğü yükselt / düşür, PTT / EXIT - çıkış. Çıkış yaptıktan sonra ekran boş görünür. Ekranı yenilemek için menüyü açıp kapatın. @piotr022, v78.", "selectSpectr", "selectApp");
+            this.selectSpectrM = addRadioButton(this.modSpecificDiv, "Gelişmiş spektrum analizörü. Işık düğmesi ile açılır. Başlatmadan önce, susturma (SQL) ayarını 0'a alın veya ışık butonunun üzerindeki MON tuşuna basarak susturmayı devre dışı bırakın. Up / down - frekans değiştirme, 1/7 - hassasiyet (ölçüm süresi), 2/8 - frekans adımı, 9/3 - yaklaştır / uzaklaştır, * / F (basılı tutun) - susturma seviyesi, 5 - arka aydınlatma, 0 - frekansı görmezden gel, EXIT - çıkış. Çıkış yaptıktan sonra ekran boş görünür. Ekranı yenilemek için menüye girip çıkın. @fagci, v66.", "selectSpectrM", "selectApp");
+            this.selectMessenger = addRadioButton(this.modSpecificDiv, "Metin mesajlaşma uygulaması (dijital gönderim). Işık düğmesi ile başlatılır. Mesajınızı yazmak için T9 klavyesi şeklinde tuşlara basarak giriş yapın, MENU - gönder, EXIT - varsa temizle message, mesaj yoksa çıkış yap. Bir harfi sabitlemek için (aynı sayı tuşunu kullanmanız gerekiyorsa), * tuşuna basın. @piotr022, v78.", "selectMessenger", "selectApp");
+            this.selectPong = addRadioButton(this.modSpecificDiv, "Pong oyunu (ilk yapılan mod uygulaması). Açılıştan sonra başlar. @piotr022, v78.", "selectPong", "selectApp");
             this.selectSbar.checked = true;
         }
 
@@ -25,37 +25,37 @@ modClasses = [
                 firmwareData = replaceSection(firmwareData, hexString("45E6000002000000030000000400000005000000060000000700000008000000090000000A0000000B0000000C0000000D0000000E0000002DE7"), 0x0004);
                 firmwareData = replaceSection(firmwareData, dataSbar, firmwareData.length);
 
-                log(`Success: ${this.name} applied: RSSI-Sbar.`);
+                log(`Başarılı: ${this.name} RSSI-Sbar modu uygulandı.`);
             }
             else if (this.selectGraph.checked) {
                 firmwareData = replaceSection(firmwareData, hexString("E9E6000002000000030000000400000005000000060000000700000008000000090000000A0000000B0000000C0000000D0000000E000000D9E8"), 0x0004);
                 firmwareData = replaceSection(firmwareData, dataGraph, firmwareData.length);
 
-                log(`Success: ${this.name} applied: RSSI-Graph.`);
+                log(`Başarılı: ${this.name} RSSI-Graph modu uygulandı.`);
             }
             else if (this.selectSpectr.checked) {
                 firmwareData = replaceSection(firmwareData, hexString("CDE9000002000000030000000400000005000000060000000700000008000000090000000A0000000B0000000C0000000D0000000E000000CDE6"), 0x0004);
                 firmwareData = replaceSection(firmwareData, dataSpectr, firmwareData.length);
 
-                log(`Success: ${this.name} applied: Spectrum (piotr022).`);
+                log(`Başarılı: ${this.name} Spektrum (piotr022) modu uygulandı.`);
             }
             else if (this.selectSpectrM.checked) {
                 firmwareData = replaceSection(firmwareData, hexString("79EE000002000000030000000400000005000000060000000700000008000000090000000A0000000B0000000C0000000D0000000E0000001DE8"), 0x0004);
                 firmwareData = replaceSection(firmwareData, dataSpectrM, firmwareData.length);
 
-                log(`Success: ${this.name} applied: Advanced Spectrum (fagci).`);
+                log(`Başarılı: ${this.name} Gelişmiş Spektrum (fagci) modu uygulandı.`);
             }
             else if (this.selectMessenger.checked) {
                 firmwareData = replaceSection(firmwareData, hexString("09EB000002000000030000000400000005000000060000000700000008000000090000000A0000000B0000000C0000000D0000000E000000B5E5"), 0x0004);
                 firmwareData = replaceSection(firmwareData, dataMessenger, firmwareData.length);
 
-                log(`Success: ${this.name} applied: Messenger.`);
+                log(`Başarılı: ${this.name} Mesaj uygulaması modu uygulandı.`);
             }
             else if (this.selectPong.checked) {
                 firmwareData = replaceSection(firmwareData, hexString("E9E6000002000000030000000400000005000000060000000700000008000000090000000A0000000B0000000C0000000D0000000E00000049E9"), 0x0004);
                 firmwareData = replaceSection(firmwareData, dataPong, firmwareData.length);
 
-                log(`Success: ${this.name} applied: Pong.`);
+                log(`Başarılı: ${this.name} Pong uygulaması modu uygulandı.`);
             }
 
             return firmwareData;
@@ -64,7 +64,7 @@ modClasses = [
     ,
     class Mod_BatteryIcon extends FirmwareMod {
         constructor() {
-            super("Battery icon", "Changes the battery icon to a more normal looking variant.", 0);
+            super("Batarya simgesi", "Batarya simgesini daha normal görünen bir versiyonu ile değiştirir.", 0);
         }
 
         apply(firmwareData) {
@@ -73,10 +73,10 @@ modClasses = [
             const newData = hexString("3e2263414141414141414141414141417f003e2263414141414141414141415d5d4163003e2263414141414141415d5d415d5d417f003e2263414141415d5d415d5d415d5d417f003e2263415d5d415d5d415d5d415d5d417f");
             if (compareSection(firmwareData, oldData, offset)) {
                 firmwareData = replaceSection(firmwareData, newData, offset);
-                log(`Success: ${this.name} applied.`);
+                log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Unexpected data, already patched or wrong firmware?`);
+                log(`HATA! ${this.name}: Beklenmeyen veri, zaten modlanmış veya yanlış bir yazılım olabilir.`);
             }
 
             return firmwareData;
@@ -85,13 +85,13 @@ modClasses = [
     ,
     class Mod_CustomBootscreen extends FirmwareMod {
         constructor() {
-            super("Custom Bootscreen", "Changes the bootscreen of the radio to an image, displayed for 2 seconds on startup. The PONMSG setting in the menu is ignored, custom bootscreen is always shown. Images are automatically compressed by removing blank space on top and bottom. Make a narrow banner if you need to save space. ", "up to 1024");
+            super("Özel Açılış Ekranı", "Telsiz açılırken 2 saniyeliğine görüntülenen açılış görüntüsünü başka bir görsel ile değiştirir. Ayarlar arasında yer alan PONMSG ayarı dikkate alınmaz, her zaman bu görsel görüntülenir. Görseller, üst ve alt kısmındaki boş kısımlar kaldırılarak otomatik olarak sıkıştırılır. Yer tasarrufu için üst ve alt kısmından daha dar bir görsel hazırlayabilirsiniz. ", "en fazla 1024");
 
-            this.selectTrollface = addRadioButton(this.modSpecificDiv, "Troll Face (933 Bytes)", "selectTrollface", "selectBootscreen");
-            this.selectQ = addRadioButton(this.modSpecificDiv, "Quansheng Q Logo (929 Bytes)", "selectQ", "selectBootscreen");
-            this.selectUVMOD = addRadioButton(this.modSpecificDiv, "UVMOD Banner (214 Bytes)", "selectUVMOD", "selectBootscreen");
-            this.selectNOKIA = addRadioButton(this.modSpecificDiv, "NOKIA Logo (507 Bytes)", "selectNOKIA", "selectBootscreen");
-            this.selectCustomFile = addRadioButton(this.modSpecificDiv, "Custom image (will be converted and compressed automatically, ideal size 128x64)", "selectCustom", "selectBootscreen");
+            this.selectTrollface = addRadioButton(this.modSpecificDiv, "Troll Face (933 bayt)", "selectTrollface", "selectBootscreen");
+            this.selectQ = addRadioButton(this.modSpecificDiv, "Quansheng Q Logosu (929 bayt)", "selectQ", "selectBootscreen");
+            this.selectUVMOD = addRadioButton(this.modSpecificDiv, "UVMOD Logosu (214 bayt)", "selectUVMOD", "selectBootscreen");
+            this.selectNOKIA = addRadioButton(this.modSpecificDiv, "NOKIA Logosu (507 bayt)", "selectNOKIA", "selectBootscreen");
+            this.selectCustomFile = addRadioButton(this.modSpecificDiv, "Özel resim (Otomatik olarak dönüştürülecek ve sıkıştırılacaktır. İdeal boyut: 128x64)", "selectCustom", "selectBootscreen");
             this.selectTrollface.checked = true;
 
             const fileInputDiv = document.createElement("div");
@@ -102,7 +102,7 @@ modClasses = [
             this.customFileInput.accept = "image/bmp,image/jpeg,image/png";
             this.customFileLabel = document.createElement("label");
             this.customFileLabel.className = "custom-file-label";
-            this.customFileLabel.innerText = "Choose image file";
+            this.customFileLabel.innerText = "Resim dosyasını seçin";
             this.customFileLabel.for = "customFileInput";
             fileInputDiv.appendChild(this.customFileInput);
             fileInputDiv.appendChild(this.customFileLabel);
@@ -527,7 +527,7 @@ modClasses = [
     ,
     class Mod_MicGain extends FirmwareMod {
         constructor() {
-            super("Increase Mic Gain", "Gives the microphone gain an additional boost, making the microphone generally more sensitive.", 0);
+            super("Mikrofon Sesini Artır", "Gives the microphone gain an additional boost, making the microphone generally more sensitive.", 0);
         }
 
         apply(firmwareData) {
