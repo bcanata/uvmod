@@ -234,7 +234,7 @@ modClasses = [
             firmwareData = replaceSection(firmwareData, hexString("0001"), 0xd1f0); // patch bootscreen duration to 2 seconds
             firmwareData = replaceSection(firmwareData, imageData, firmwareData.length);
 
-            log(`Success: ${this.name} applied using ${imageData.length} bytes of extra space.`);
+            log(`Başarılı: ${this.name} uygulandı using ${imageData.length} bytes of extra space.`);
 
             return firmwareData;
         }
@@ -251,10 +251,10 @@ modClasses = [
             const newData = hexString("00bf00bff8f7b9fb00f002f8");
             if (compareSection(firmwareData, oldData, offset)) {
                 firmwareData = replaceSection(firmwareData, newData, offset);
-                log(`Success: ${this.name} applied.`);
+                log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Unexpected data, already patched or wrong firmware?`);
+                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
@@ -283,7 +283,7 @@ modClasses = [
                 firmwareData = replaceSection(firmwareData, smallDigits, 0xd620);
             }
 
-            log(`Success: ${this.name} applied.`);
+            log(`Başarılı: ${this.name} uygulandı.`);
             return firmwareData;
         }
     }
@@ -299,10 +299,10 @@ modClasses = [
             const newData = hexString("a7");
             if (compareSection(firmwareData, oldData, offset)) {
                 firmwareData = replaceSection(firmwareData, newData, offset);
-                log(`Success: ${this.name} applied.`);
+                log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Unexpected data, already patched or wrong firmware?`);
+                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
@@ -320,10 +320,10 @@ modClasses = [
             const newData = hexString("00bf");
             if (compareSection(firmwareData, oldData, offset)) {
                 firmwareData = replaceSection(firmwareData, newData, offset);
-                log(`Success: ${this.name} applied.`);
+                log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Unexpected data, already patched or wrong firmware?`);
+                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
@@ -341,17 +341,17 @@ modClasses = [
             const newData = hexString("f0bd");
             if (compareSection(firmwareData, oldData, offset)) {
                 firmwareData = replaceSection(firmwareData, newData, offset);
-                log(`Success: ${this.name} applied.`);
+                log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Unexpected data, already patched or wrong firmware?`);
+                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
         }
     }
     ,
-    class Mod_EnableTXEverywhere extends FirmwareMod {
+    /*class Mod_EnableTXEverywhere extends FirmwareMod {
         constructor() {
             super("Enable TX everywhere", "DANGER! Allows transmitting on all frequencies. Only use this mod for testing, do not transmit on illegal frequencies!", 0);
             this.hidden = true;
@@ -363,17 +363,17 @@ modClasses = [
             const newData = hexString("5de0");
             if (compareSection(firmwareData, oldData, offset)) {
                 firmwareData = replaceSection(firmwareData, newData, offset);
-                log(`Success: ${this.name} applied.`);
+                log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Unexpected data, already patched or wrong firmware?`);
+                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
         }
     }
-    ,
-    class Mod_EnableTXEverywhereButAirBand extends FirmwareMod {
+    ,*/
+    /*class Mod_EnableTXEverywhereButAirBand extends FirmwareMod {
         constructor() {
             super("Enable TX everywhere except Air Band", "DANGER! Allows transmitting on all frequencies except air band (118 - 137 MHz). Only use this mod for testing, do not transmit on illegal frequencies!", 0);
             this.hidden = true;
@@ -383,13 +383,13 @@ modClasses = [
             const offset = 0x1804;
             const newData = hexString("f0b5014649690968054a914205d3054a914202d20020c04301e00020ffe7f0bdc00db400a00bd100");
             firmwareData = replaceSection(firmwareData, newData, offset);
-            log(`Success: ${this.name} applied.`);
+            log(`Başarılı: ${this.name} uygulandı.`);
 
             return firmwareData;
         }
     }
-    ,
-    class Mod_CustomTXRange extends FirmwareMod {
+    ,*/
+    /*class Mod_CustomTXRange extends FirmwareMod {
         constructor() {
             super("Custom TX Range", "DANGER: This mod replaces the TX Disabled check with a simple function that either blocks a range of frequencies and allows all else, or vice versa. It can be used to do the same as 'Enable TX everywhere except Air Band', or it could also be used to make the radio only TX on PMR466. The preset values below are set to block Air Band and allow everything else.", 0);
             this.hidden = true;
@@ -418,12 +418,12 @@ modClasses = [
             dataView.setUint32(36, highFreq, true);
 
             firmwareData = replaceSection(firmwareData, shellcode, offset);
-            log(`Success: ${this.name} applied.`);
+            log(`Başarılı: ${this.name} uygulandı.`);
 
             return firmwareData;
         }
     }
-    ,
+    ,*/
     class Mod_BacklightDuration extends FirmwareMod {
         constructor() {
             super("Backlight Duration", "Sets a multiplier for the backlight duration.", 0);
@@ -454,7 +454,7 @@ modClasses = [
 
             const newData = new Uint8Array(buffer);
             firmwareData = replaceSection(firmwareData, newData, offset);
-            log(`Success: ${this.name} applied.`);
+            log(`Başarılı: ${this.name} uygulandı.`);
 
             return firmwareData;
         }
@@ -519,7 +519,7 @@ modClasses = [
                 firmwareData = replaceSection(firmwareData, paddedString, offset);
             });
 
-            log(`Success: ${this.name} applied.`);
+            log(`Başarılı: ${this.name} uygulandı.`);
             return firmwareData;
         }
 
@@ -527,7 +527,7 @@ modClasses = [
     ,
     class Mod_MicGain extends FirmwareMod {
         constructor() {
-            super("Mikrofon Sesini Artır", "Gives the microphone gain an additional boost, making the microphone generally more sensitive.", 0);
+            super("Mikrofon Sesini Artır", "Mikrofon gönderim sesime ekstra bir artırım sağlar, mikrofonu genel olarak daha hassas hale getirir.", 0);
         }
 
         apply(firmwareData) {
@@ -539,17 +539,17 @@ modClasses = [
             if (compareSection(firmwareData, oldData, offset) && compareSection(firmwareData, oldData, offset2)) {
                 firmwareData = replaceSection(firmwareData, newData, offset);
                 firmwareData = replaceSection(firmwareData, newData, offset2);
-                log(`Success: ${this.name} applied.`);
+                log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Unexpected data, already patched or wrong firmware?`);
+                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
         }
     }
     ,
-    class Mod_RogerBeep extends FirmwareMod {
+    /*class Mod_RogerBeep extends FirmwareMod {
         constructor() {
             super("Roger Beep", "Changes the pitch of the two roger beep tones. Tone 1 plays for 150ms and tone 2 for 80ms. The defaults in this mod are similar to the Mototrbo beep. The maximum is 6347 Hz. ", 0);
             this.inputTone1 = addInputField(this.modSpecificDiv, "Tone 1 frequency (Hz)", "1540");
@@ -577,17 +577,17 @@ modClasses = [
                 firmwareData = replaceSection(firmwareData, tonesHex, offset);
                 firmwareData = replaceSection(firmwareData, hexString("96"), 0xae9a);
 
-                log(`Success: ${this.name} applied.`);
+                log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Unexpected data, already patched or wrong firmware?`);
+                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
         }
     }
-    ,
-    class Mod_EnableSWDPort extends FirmwareMod {
+    ,*/
+    /*class Mod_EnableSWDPort extends FirmwareMod {
         constructor() {
             super("Enable SWD Port", "If you don't know what SWD is, you don't need this mod! Allows debugging via SWD. You will need to solder wires to the main board of the radio and connect them to specialized hardware. ", 0);
         }
@@ -601,21 +601,21 @@ modClasses = [
             if (compareSection(firmwareData, oldData1, offset1) && compareSection(firmwareData, oldData2, offset2)) {
                 firmwareData = replaceSection(firmwareData, newData, offset1);
                 firmwareData = replaceSection(firmwareData, newData, offset2);
-                log(`Success: ${this.name} applied.`);
+                log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Unexpected data, already patched or wrong firmware?`);
+                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
         }
     }
-    ,
+    ,*/
     class Mod_FrequencyRangeAdvanced extends FirmwareMod {
         constructor() {
-            super("Custom Frequency Ranges", "Changes the frequency range limits.", 0);
-            this.selectSimple = addRadioButton(this.modSpecificDiv, "Simple Mode: Extend Band 1 down to 18 MHz and Band 7 up to 1300 MHz. This is the maximum frequency range of the chip. ", "selectSimpleMode", "selectFrequencyRange");
-            this.selectCustom = addRadioButton(this.modSpecificDiv, "Custom Mode: Manually edit the frequency ranges. ", "selectCustomMode", "selectFrequencyRange");
+            super("Özel Frekans Aralıkları", "Frekans aralıklarını değiştirir.", 0);
+            this.selectSimple = addRadioButton(this.modSpecificDiv, "Basit Mod: Bant 1'i 18 MHz'e indirir, Bant 7'nin üst limitini ise 1300 MHz'e çıkarır. Cihazın üzerindeki çipin kullanabileceği maksimum aralıktır. Cihazı bu şekilde kullanmanız yasal değildir, kendi sorumluluğunuzdadır.", "selectSimpleMode", "selectFrequencyRange");
+            this.selectCustom = addRadioButton(this.modSpecificDiv, "Amatör Telsizci Modu: Frekans aralıklarını kendiniz belirleyin. Standart olarak VHF-UHF bantları için yasal frekans aralıkları ayarlıdır.", "selectCustomMode", "selectFrequencyRange");
             this.selectSimple.checked = true;
 
             const customModeDiv = document.createElement("div");
@@ -623,23 +623,23 @@ modClasses = [
 
             // add a brief explanation
             const explanation = document.createElement("p");
-            explanation.innerText = "You can customize the frequency ranges here. Make sure they are in the correct order and don't overlap. The maximum range is 18 MHz to 1300 MHz, and there is a gap from 630 - 840 MHz, where the chip cannot receive or transmit due to a hardware limitation.";
+            explanation.innerText = "Frekans aralıklarını buradan değiştirebilirsiniz. Burada hazır gelen ayarlar, amatör telsizcilerin VHF ve UHF bantları için kullanabileceği frekans aralıklarına göre ayarlanmıştır. Değişiklik yaparsanız, frekans aralıklarının doğru sıralamada olduğundan ve üst üste binmediğinden emin olun. Maksimum aralık 18 MHz ve 1300 MHz arasındadır, 630 - 840 MHz arasında da çipin donanımsal kısıtlamalar sebebiyle alım veya gönderim yapamadığı bir boşluk mevcuttur.";
             customModeDiv.appendChild(explanation);
 
-            this.band1L = addInputField(customModeDiv, "Band 1 Lower Limit (Hz)", "50000000");
-            this.band1U = addInputField(customModeDiv, "Band 1 Upper Limit (Hz)", "76000000");
-            this.band2L = addInputField(customModeDiv, "Band 2 Lower Limit (Hz)", "108000000");
-            this.band2U = addInputField(customModeDiv, "Band 2 Upper Limit (Hz)", "135999900");
-            this.band3L = addInputField(customModeDiv, "Band 3 Lower Limit (Hz)", "136000000");
-            this.band3U = addInputField(customModeDiv, "Band 3 Upper Limit (Hz)", "173999900");
-            this.band4L = addInputField(customModeDiv, "Band 4 Lower Limit (Hz)", "174000000");
-            this.band4U = addInputField(customModeDiv, "Band 4 Upper Limit (Hz)", "349999900");
-            this.band5L = addInputField(customModeDiv, "Band 5 Lower Limit (Hz)", "350000000");
-            this.band5U = addInputField(customModeDiv, "Band 5 Upper Limit (Hz)", "399999900");
-            this.band6L = addInputField(customModeDiv, "Band 6 Lower Limit (Hz)", "400000000");
-            this.band6U = addInputField(customModeDiv, "Band 6 Upper Limit (Hz)", "469999900");
-            this.band7L = addInputField(customModeDiv, "Band 7 Lower Limit (Hz)", "470000000");
-            this.band7U = addInputField(customModeDiv, "Band 7 Upper Limit (Hz)", "600000000");
+            this.band1L = addInputField(customModeDiv, "VHF Alt Limit (Hz)", "144000000");
+            this.band1U = addInputField(customModeDiv, "VHF Üst Limit (Hz)", "146000000");
+            this.band2L = addInputField(customModeDiv, "UHF Röle RX Alt Limit (Hz)", "430200000");
+            this.band2U = addInputField(customModeDiv, "UHF Röle RX Üst Limit (Hz)", "430700000");
+            this.band3L = addInputField(customModeDiv, "UHF Röle RX Alt Limit (Hz)", "431550000");
+            this.band3U = addInputField(customModeDiv, "UHF Röle RX Üst Limit (Hz)", "431825000");
+            this.band4L = addInputField(customModeDiv, "UHF Uydu + Diğer Modlar Alt Limit (Hz)", "432000000");
+            this.band4U = addInputField(customModeDiv, "UHF Uydu + Diğer Modlar Üst Limit (Hz)", "432975000");
+            this.band5L = addInputField(customModeDiv, "UHF Simpleks Alt Limit (Hz)", "433400000");
+            this.band5U = addInputField(customModeDiv, "UHF Simpleks Üst Limit (Hz)", "433575000");
+            this.band6L = addInputField(customModeDiv, "UHF Uygu Alt Limit (Hz)", "435000000");
+            this.band6U = addInputField(customModeDiv, "UHF Uydu Alt Limit (Hz)", "437975000");
+            this.band7L = addInputField(customModeDiv, "UHF Röle TX Alt Limit (Hz)", "439150000");
+            this.band7U = addInputField(customModeDiv, "UHF Röle TX Alt Limit (Hz)", "439425000");
 
             this.modSpecificDiv.appendChild(customModeDiv);
 
@@ -688,21 +688,21 @@ modClasses = [
                 firmwareData = replaceSection(firmwareData, freqsHex, 0xE074);
             }
 
-            log(`Success: ${this.name} applied.`);
+            log(`Başarılı: ${this.name} uygulandı.`);
             return firmwareData;
         }
     }
     ,
     class Mod_FrequencySteps extends FirmwareMod {
         constructor() {
-            super("Frequency Steps", "Changes the frequency steps.", 0);
-            this.inputStep1 = addInputField(this.modSpecificDiv, "Frequency Step 1 (Hz)", "2500");
-            this.inputStep2 = addInputField(this.modSpecificDiv, "Frequency Step 2 (Hz)", "5000");
-            this.inputStep3 = addInputField(this.modSpecificDiv, "Frequency Step 3 (Hz)", "6250");
-            this.inputStep4 = addInputField(this.modSpecificDiv, "Frequency Step 4 (Hz)", "10000");
-            this.inputStep5 = addInputField(this.modSpecificDiv, "Frequency Step 5 (Hz)", "12500");
-            this.inputStep6 = addInputField(this.modSpecificDiv, "Frequency Step 6 (Hz)", "25000");
-            this.inputStep7 = addInputField(this.modSpecificDiv, "Frequency Step 7 (Hz) (only available on band 2)", "8330");
+            super("Frekans Adımları", "VFO modunda ileri geri tuşlarıyla atlayabileceğiniz frekans adımları. Türkiye'de Amatör Telsiz frekansları için 12.5 KHz aralık kullanılır (Adım 5)", 0);
+            this.inputStep1 = addInputField(this.modSpecificDiv, "Frekans Adımı 1 (Hz)", "2500");
+            this.inputStep2 = addInputField(this.modSpecificDiv, "Frekans Adımı 2 (Hz)", "5000");
+            this.inputStep3 = addInputField(this.modSpecificDiv, "Frekans Adımı 3 (Hz)", "6250");
+            this.inputStep4 = addInputField(this.modSpecificDiv, "Frekans Adımı 4 (Hz)", "10000");
+            this.inputStep5 = addInputField(this.modSpecificDiv, "Frekans Adımı 5 (Hz)", "12500");
+            this.inputStep6 = addInputField(this.modSpecificDiv, "Frekans Adımı 6 (Hz)", "25000");
+            this.inputStep7 = addInputField(this.modSpecificDiv, "Frekans Adımı 7 (Hz) (sadece bant 2'de çalışır)", "8330");
         }
 
         apply(firmwareData) {
@@ -733,12 +733,12 @@ modClasses = [
             // Replace the 14-byte section at the offset with the new buffer
             firmwareData = replaceSection(firmwareData, stepsHex, offset);
 
-            log(`Success: ${this.name} applied.`);
+            log(`Başarılı: ${this.name} uygulandı.`);
             return firmwareData;
         }
     }
     ,
-    class Mod_NOAAFrequencies extends FirmwareMod {
+    /*class Mod_NOAAFrequencies extends FirmwareMod {
         constructor() {
             super("NOAA Frequencies", "The NOAA scan feature is unique because it can scan in the background, all the time. However, most people dont need the weather alerts or dont have NOAA in their country. This mod lets you change the frequencies so you can use the NOAA scan function for something else, but keep in mind that the radio needs the 1050hz tone burst to open squelch. The values below are pre-set to the first 10 PMR446 channels. ", 0);
             this.inputFreq1 = addInputField(this.modSpecificDiv, "Frequency 1 (Hz)", "446006250");
@@ -784,11 +784,11 @@ modClasses = [
             // Replace the 14-byte section at the offset with the new buffer
             firmwareData = replaceSection(firmwareData, freqsHex, offset);
 
-            log(`Success: ${this.name} applied.`);
+            log(`Başarılı: ${this.name} uygulandı.`);
             return firmwareData;
         }
     }
-    ,
+    ,*/
     /*
     class Mod_ChangeToneBurst extends FirmwareMod {
         constructor() {
@@ -809,7 +809,7 @@ modClasses = [
                 console.log(uint8ArrayToHexString(newData)); // value is correct
 
                 firmwareData = replaceSection(firmwareData, newData, 0x29cc); // does not seem to work
-                log(`Success: ${this.name} applied.`);
+                log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
                 log(`ERROR in ${this.name}: Repeater Tone Burst must be a Tone Freq. in Hz from 1000-3950 Hz!`);
@@ -821,7 +821,7 @@ modClasses = [
     ,
     class Mod_AMOnAllBands extends FirmwareMod {
         constructor() {
-            super("AM RX on all Bands", "For some reason, the original firmware only allows the AM setting to work on band 2. This mod allows AM to work on any band.", 0);
+            super("Bütün Bantlarda AM RX Çalışsın", "Yazılımsal kısıtlama sebebiyle AM modülasyon ile alma sadece bant 2'de çalışmaktadır. Bu mod bütün bantlarda AM alma yapabilmenizi sağlar.", 0);
         }
 
         apply(firmwareData) {
@@ -838,10 +838,10 @@ modClasses = [
                 firmwareData = replaceSection(firmwareData, newData1, offset1);
                 firmwareData = replaceSection(firmwareData, newData2, offset2);
                 firmwareData = replaceSection(firmwareData, newData3, offset3);
-                log(`Success: ${this.name} applied.`);
+                log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Unexpected data, already patched or wrong firmware?`);
+                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
@@ -850,7 +850,7 @@ modClasses = [
     ,
     class Mod_CustomFm_radio extends FirmwareMod {
         constructor() {
-            super("FM Radio Frequencies", "Changes the FM radio frequency range", "0");
+            super("FM Radyo Frekansları", "FM radyonun frekans aralığını değiştirir. Türkiye'de 87.5 - 108 MHz aralığı kullanılmaktadır.", "0");
 
             this.select6476mhz = addRadioButton(this.modSpecificDiv, "64 - 76 MHz", "select6476mhz", "selectFm_radio");
             this.select64108mhz = addRadioButton(this.modSpecificDiv, "64 - 108 MHz", "select64108mhz", "selectFm_radio");
@@ -894,7 +894,7 @@ modClasses = [
                 firmwareData = replaceSection(firmwareData, Reg05, 0xa274);
                 firmwareData = replaceSection(firmwareData, MOVSR0, 0x6452);
             }
-            log(`Success: ${this.name} applied.`);
+            log(`Başarılı: ${this.name} uygulandı.`);
             return firmwareData;
 
         }
@@ -902,8 +902,8 @@ modClasses = [
     ,
     class Mod_AirCopy extends FirmwareMod {
         constructor() {
-            super("AIR COPY Frequency", "Changes the frequency used by AIR COPY. The default value is 410.025 MHz. ", 0);
-            this.inputFreq1 = addInputField(this.modSpecificDiv, "Air Copy Frequency (Hz)", "410025000");
+            super("AIR COPY Frekansı", "İki cihaz arasında ayar aktarımı yapabileceğiniz AIR COPY frekansını değiştirir. Varsayılan ayarı 410.025 MHz'dir. ", 0);
+            this.inputFreq1 = addInputField(this.modSpecificDiv, "Air Copy Frekansı (Hz)", "410025000");
 
         }
 
@@ -925,10 +925,10 @@ modClasses = [
                 firmwareData = replaceSection(firmwareData, freqHex, offset);
                 //firmwareData = replaceSection(firmwareData, hexString("96"), 0xae9a);
 
-                log(`Success: ${this.name} applied.`);
+                log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Unexpected data, already patched or wrong firmware?`);
+                log(`ERROR in ${this.name}: Beklenmeyen veri, zaten modlanmış veya hatalı bir yazılım olabilir.`);
             }
 
             return firmwareData;
@@ -937,9 +937,9 @@ modClasses = [
     ,
     class Mod_ChangeContrast extends FirmwareMod {
         constructor() {
-            super("LCD Contrast", "Changes LCD contrast to any value from 0 to 63 (higher is darker). The default value is 31", 0);
+            super("LCD Kontrastı", "LCD kontrast değerini 0 ve 63 arasında bir değer ile değiştirir (daha yüksek, daha koyu anlamına gelir). Varsayılan ayarı 31'dir.", 0);
 
-            this.contrastValue = addInputField(this.modSpecificDiv, "Enter a new contrast value from 0-63:", "31");
+            this.contrastValue = addInputField(this.modSpecificDiv, "0-63 arasında yeni bir kontrast değeri girin:", "31");
         }
 
         apply(firmwareData) {
@@ -950,10 +950,10 @@ modClasses = [
             if (!isNaN(inputValue) && inputValue >= minValue && inputValue <= maxValue) {
                 const newData = new Uint8Array([inputValue]);
                 firmwareData = replaceSection(firmwareData, newData, 0xb7b0);
-                log(`Success: ${this.name} applied.`);
+                log(`Başarılı: ${this.name} uygulandı.`);
             }
             else {
-                log(`ERROR in ${this.name}: Contrast value must be a number from 0-63!`);
+                log(`ERROR in ${this.name}: Kontrast değeri 0-63 arasında bir değer olmalı!`);
             }
             return firmwareData;
         }
