@@ -119,7 +119,7 @@ function modLoader() {
     addModToUI(modInstance, modDiv);
     document.getElementById("modsContainer").appendChild(modDiv);
   });
-  log("Patcher ready.");
+  log("Mod yazılımı hazır.");
 
   // for development purposes, add ?hidden to the url to always show hidden mods
   if (window.location.href.indexOf("?hidden") > -1) {
